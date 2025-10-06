@@ -9,7 +9,7 @@ import AnimatedOnView from "@/components/animated-on-view"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 const WHATSAPP_LINK =
-  "https://wa.me/447000000000?text=Hi%20EHD%20Detailing%2C%20I%27d%20like%20a%20quote%20for%20my%20car." // update number
+  "https://wa.me/447436778666?text=Hi%20EHD%20Detailing%2C%20I%27d%20like%20a%20quote%20for%20my%20car." // update number
 
 function SiteHeader() {
   const nav = [
@@ -28,8 +28,8 @@ function SiteHeader() {
           <Image
             src="/images/ehd-logo.jpg"
             alt="EHD Detailing logo"
-            width={160}
-            height={40}
+            width={260}
+            height={60}
             className="h-8 w-auto drop-shadow-lg"
           />
           <span className="sr-only">EHD Detailing</span>
@@ -77,11 +77,9 @@ function Hero() {
             Mobile • Ceramic • Paint Protection
           </div>
           <h1 className="mt-5 text-pretty text-3xl font-semibold drop-shadow-md md:text-5xl">
-            Showroom shine. Professional detailing that protects and stuns.
-          </h1>
+            Professional Vehicle Detailing in Bathgate Excellence in Every Detail —  We Can Make Your Vehicle Look and Feel Brand New Again!          </h1>
           <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg leading-relaxed">
-            Paint correction, ceramic coatings, and meticulous interior treatments—delivered with precision.
-          </p>
+            Deep Cleaning, Steam Cleaning, Pet Hair Removal, Odour Removal, Engine Bay Detail, Paint Corrections / Polishing, Cermaic Coatings, Any Size / Type of Vehicle! - Transform your Car!          </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button size="lg" asChild>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
@@ -144,24 +142,81 @@ function Services() {
 function Packages() {
   const tiers = [
     {
-      name: "Essentials",
-      price: "£99+",
-      features: ["Two-bucket hand wash", "Wheels & tyres", "Vacuum & interior wipe", "Spray sealant"],
+      name: "Standard Valet",
+      price: "From £45",
+      features: [
+        "Prewash & handwash",
+        "Wheels cleaned",
+        "Interior hoover",
+        "Dash & centre console cleaned",
+        "Plastics wiped down",
+        "Air freshener",
+      ],
       highlight: false,
     },
     {
-      name: "Enhancement",
-      price: "£249+",
-      features: ["Decon + clay bar", "Single-stage polish", "Ceramic sealant (6–12 mo)", "Glass & trim protection"],
-      highlight: true,
-    },
-    {
-      name: "Ceramic Pro",
-      price: "£699+",
-      features: ["Multi-stage correction", "2–5 year coating", "Wheel faces coated", "Interior protection add-on"],
+      name: "Full Valet",
+      price: "From £75",
+      features: [
+        "Seats & carpets shampooed",
+        "Leather treatment & interior protection",
+        "Arches cleaned & hand dried",
+        "Exterior wax, vinyl trims dressed",
+        "Tar spot removal & exhaust tips polished",
+        "Alloy protection & glass sealant applied",
+      ],
       highlight: false,
     },
+    {
+      name: "Deep Clean",
+      price: "From £135",
+      features: [
+        "Seats shampooed and extracted",
+        "Full steam clean / full safe wash",
+        "Full paintwork decontamination",
+        "12 month protective coating",
+        "Wheel sealant & glass sealant",
+        "Engine bay detailed",
+      ],
+      highlight: false,
+    },
+    {
+      name: "Maintenance Valet",
+      price: "From £40-50",
+      features: [
+        "Post full valet / deep clean upkeep",
+        "Keep vehicle at best possible standard",
+        "Guaranteed slots every 4–6 weeks",
+        "Deep clean standards maintained every time",
+      ],
+      highlight: false,
+    },
+    {
+      name: "Extras",
+      price: "Add-ons",
+      features: [
+        "Pet Hair Removal — £10",
+        "Steam Clean — £15",
+        "Engine Bay Detail — £20",
+        "7 Seater extra — £15",
+        "Machine Polishing — From £50",
+        "Motorbikes — From £40",
+      ],
+      highlight: false,
+    },
+    {
+      name: "Terms & Conditions",
+      price: "",
+      features: [
+        "Prices based on average condition of vehicle",
+        "Heavily soiled vehicles (dirt, pet hair, vomit) may incur extra charges",
+        "Cancellation within 24 hrs of appointment may incur a charge",
+      ],
+      highlight: false,
+    },
+
   ]
+
   return (
     <section id="packages" className="relative bg-background border-b border-white/5">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-grid" />
@@ -231,6 +286,7 @@ function Packages() {
     </section>
   )
 }
+
 
 function Gallery() {
   return <GallerySection initialVisible={10} />
