@@ -1,35 +1,29 @@
 "use client"
 
 import Image from "next/image"
-import { useMemo, useState, useEffect, useRef } from "react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { useState, useEffect, useRef } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
 type GalleryImage = { src: string; alt?: string }
 
 export default function GallerySection({
-  images,
-  initialVisible = 10,
   title = "Gallery",
   subtitle = "Deep gloss. Crisp reflections. Mirror-like finishes.",
 }: {
-  images?: GalleryImage[]
-  initialVisible?: number
   title?: string
   subtitle?: string
 }) {
-  const fallback = useMemo(
-    () =>
-      Array.from({ length: 30 }).map((_, i) => ({
-        src: `/placeholder.svg?height=480&width=720&query=car%20detailing%20closeup%20shot%20${i + 1}`,
-        alt: `Detailing image ${i + 1}`,
-      })),
-    [],
-  )
+  // 🔹 Add all your images manually here
+  const images: GalleryImage[] = [
+    { src: "/images/gallery/ford-transit-van.jpg", alt: "Gallery Image 1" },
+    // { src: "/images/gallery/golf-r-side.jpg", alt: "Gallery Image 2" },
+    { src: "/images/gallery/golf-r-white.jpg", alt: "Gallery Image 3" },
+    { src: "/images/gallery/gwagen-black.jpg", alt: "Gallery Image 4" },
+    { src: "/images/gallery/mercedes-vclass.jpg", alt: "Gallery Image 5" },
+    { src: "/images/gallery/range-rover-sport.jpg", alt: "Gallery Image 6" },
+    // ➕ Add as many as you have
+  ]
 
-  const imgs = images && images.length > 0 ? images : fallback
-  const [showAll, setShowAll] = useState(false)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const touchX = useRef<number | null>(null)
@@ -38,9 +32,12 @@ export default function GallerySection({
     setActiveIndex(i)
     setLightboxOpen(true)
   }
+
   const closeLightbox = () => setLightboxOpen(false)
-  const prev = () => setActiveIndex((i) => (i - 1 + imgs.length) % imgs.length)
-  const next = () => setActiveIndex((i) => (i + 1) % imgs.length)
+
+  const prev = () =>
+    setActiveIndex((i) => (i - 1 + images.length) % images.length)
+  const next = () => setActiveIndex((i) => (i + 1) % images.length)
 
   useEffect(() => {
     if (!lightboxOpen) return
@@ -53,9 +50,6 @@ export default function GallerySection({
     return () => window.removeEventListener("keydown", onKey)
   }, [lightboxOpen])
 
-  const visible = showAll ? imgs : imgs.slice(0, initialVisible)
-  const remaining = Math.max(imgs.length - initialVisible, 0)
-
   return (
     <section id="gallery" className="container mx-auto px-4 py-20">
       <div className="mx-auto max-w-2xl text-center">
@@ -64,47 +58,23 @@ export default function GallerySection({
       </div>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {visible.map((img, idx) => {
-          const isLastTileCollapsed = !showAll && idx === initialVisible - 1 && remaining > 0
-          return (
-            <div
-              key={(img.alt || img.src) + idx}
-              className="group relative aspect-video overflow-hidden rounded-lg border cursor-zoom-in"
-              onClick={() => openLightbox(idx)}
-              role="button"
-              aria-label={img.alt || "Open image"}
-            >
-              <Image
-                src={img.src || "/placeholder.svg"}
-                alt={img.alt || "Gallery image"}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              {isLastTileCollapsed && (
-                <button
-                  type="button"
-                  onClick={() => setShowAll(true)}
-                  className={cn(
-                    "absolute inset-0 grid place-items-center bg-background/70 backdrop-blur-sm",
-                    "text-center text-sm",
-                  )}
-                  aria-label={`Show ${remaining} more photos`}
-                >
-                  <span className="rounded-full border px-4 py-2 text-foreground">+{remaining} more photos</span>
-                </button>
-              )}
-            </div>
-          )
-        })}
+        {images.map((img, idx) => (
+          <div
+            key={img.src + idx}
+            className="group relative aspect-video overflow-hidden rounded-lg border cursor-zoom-in"
+            onClick={() => openLightbox(idx)}
+            role="button"
+            aria-label={img.alt || "Open image"}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt || "Gallery image"}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+        ))}
       </div>
-
-      {remaining > 0 && (
-        <div className="mt-8 flex justify-center">
-          <Button variant="secondary" onClick={() => setShowAll((s) => !s)}>
-            {showAll ? "Show less" : `Show all (${imgs.length})`}
-          </Button>
-        </div>
-      )}
 
       {lightboxOpen && (
         <div
@@ -120,12 +90,11 @@ export default function GallerySection({
             if (start == null) return
             const end = e.changedTouches[0].clientX
             const delta = end - start
-            if (Math.abs(delta) > 50) {
-              delta > 0 ? prev() : next()
-            }
+            if (Math.abs(delta) > 50) delta > 0 ? prev() : next()
             touchX.current = null
           }}
         >
+          {/* Close */}
           <button
             aria-label="Close"
             onClick={(e) => {
@@ -137,6 +106,7 @@ export default function GallerySection({
             <X className="h-5 w-5" />
           </button>
 
+          {/* Prev */}
           <button
             aria-label="Previous image"
             onClick={(e) => {
@@ -148,6 +118,7 @@ export default function GallerySection({
             <ChevronLeft className="h-6 w-6" />
           </button>
 
+          {/* Next */}
           <button
             aria-label="Next image"
             onClick={(e) => {
@@ -159,14 +130,15 @@ export default function GallerySection({
             <ChevronRight className="h-6 w-6" />
           </button>
 
+          {/* Active image */}
           <div
             className="relative mx-auto flex h-full max-w-6xl items-center justify-center px-6"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative aspect-video w-full max-h-[80vh]">
               <Image
-                src={imgs[activeIndex]?.src || "/placeholder.svg"}
-                alt={imgs[activeIndex]?.alt || "Gallery image enlarged"}
+                src={images[activeIndex]?.src}
+                alt={images[activeIndex]?.alt || "Gallery image enlarged"}
                 fill
                 sizes="100vw"
                 className="object-contain"

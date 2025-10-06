@@ -11,7 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const WHATSAPP_LINK =
   "https://wa.me/447436778666?text=Hi%20EHD%20Detailing%2C%20I%27d%20like%20a%20quote%20for%20my%20car." // update number
 
-function SiteHeader() {
+ function SiteHeader() {
   const nav = [
     { href: "#services", label: "Services" },
     { href: "#packages", label: "Packages" },
@@ -21,19 +21,23 @@ function SiteHeader() {
     { href: "#contact", label: "Contact" },
     { href: "#faq", label: "FAQ" },
   ]
+
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur-sm shadow-sm">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
         <Link href="#top" className="flex items-center gap-3">
-          <Image
-            src="/images/ehd-logo.jpg"
-            alt="EHD Detailing logo"
-            width={260}
-            height={60}
-            className="h-8 w-auto drop-shadow-lg"
-          />
+          <div className="relative h-22 w-40"> {/* Adjust size here */}
+            <Image
+              src="/images/ehd-logo.jpg"
+              alt="EHD Detailing logo"
+              fill
+              className="object-contain drop-shadow-lg"
+              priority
+            />
+          </div>
           <span className="sr-only">EHD Detailing</span>
         </Link>
+
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {nav.map((n) => (
             <a key={n.href} href={n.href} className="text-muted-foreground hover:text-foreground transition-colors">
@@ -41,6 +45,7 @@ function SiteHeader() {
             </a>
           ))}
         </nav>
+
         <div className="flex items-center gap-2">
           <Button asChild className="hidden sm:inline-flex">
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
@@ -289,7 +294,7 @@ function Packages() {
 
 
 function Gallery() {
-  return <GallerySection initialVisible={10} />
+  return <GallerySection  />
 }
 
 function Process() {
