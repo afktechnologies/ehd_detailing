@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import GallerySection from "@/components/sections/gallery"
 import AnimatedOnView from "@/components/animated-on-view"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import ContactForm from "@/components/ContactForm"
 
 const WHATSAPP_LINK =
   "https://wa.me/447436778666?text=Hi%20EHD%20Detailing%2C%20I%27d%20like%20a%20quote%20for%20my%20car." // update number
@@ -154,6 +155,7 @@ function Packages() {
         "Wheels cleaned",
         "Interior hoover",
         "Dash & centre console cleaned",
+        "Plastics wiped down",
         "Plastics wiped down",
         "Air freshener",
       ],
@@ -470,19 +472,8 @@ export default function Page() {
             <p className="mt-3 text-muted-foreground">
               Message us on WhatsApp—send your car model, condition, and goals. We’ll reply promptly.
             </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <Button size="lg" asChild>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="mr-2 h-5 w-5" /> Chat on WhatsApp
-                </a>
-              </Button>
-              <Button size="lg" variant="secondary" asChild>
-                <a href="tel:+1">
-                  <Phone className="mr-2 h-5 w-5" /> Call Us
-                </a>
-              </Button>
-            </div>
           </div>
+          <ContactForm />
         </div>
       </section>
       <Footer />
