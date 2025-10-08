@@ -12,7 +12,7 @@ import ContactForm from "@/components/ContactForm"
 const WHATSAPP_LINK =
   "https://wa.me/447436778666?text=Hi%20EHD%20Detailing%2C%20I%27d%20like%20a%20quote%20for%20my%20car." // update number
 
- function SiteHeader() {
+function SiteHeader() {
   const nav = [
     { href: "#services", label: "Services" },
     { href: "#packages", label: "Packages" },
@@ -27,9 +27,9 @@ const WHATSAPP_LINK =
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur-sm shadow-sm">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
         <Link href="#top" className="flex items-center gap-3">
-          <div className="relative h-22 w-40"> {/* Adjust size here */}
+          <div className="relative h-25 w-50"> {/* Adjust size here */}
             <Image
-              src="/images/ehd-logo.jpg"
+              src="/images/ehd-logo.png"
               alt="EHD Detailing logo"
               fill
               className="object-contain drop-shadow-lg"
@@ -41,21 +41,67 @@ const WHATSAPP_LINK =
 
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {nav.map((n) => (
-            <a key={n.href} href={n.href} className="text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              key={n.href}
+              href={n.href}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               {n.label}
             </a>
           ))}
         </nav>
 
         <div className="flex items-center gap-2">
+          {/* WhatsApp Button */}
           <Button asChild className="hidden sm:inline-flex">
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-              <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+            >
+              {/* Local WhatsApp Icon */}
+              <Image
+                src="/icons/whatsapp.svg"
+                alt="WhatsApp"
+                width={18}
+                height={18}
+                className="mr-2"
+              />
+              WhatsApp
             </a>
           </Button>
+
+          {/* Call Button */}
           <Button variant="secondary" asChild>
-            <a href="tel:+1" aria-label="Call EHD Detailing">
-              <Phone className="mr-2 h-4 w-4" /> Call
+            <a href="tel:+447436778666" aria-label="Call EHD Detailing">
+              {/* Local Phone Icon */}
+              <Image
+                src="/icons/phone.svg"
+                alt="Phone"
+                width={18}
+                height={18}
+                className="mr-2"
+              />
+              Call
+            </a>
+          </Button>
+
+          {/* Email Button */}
+          <Button variant="outline" asChild>
+            <a
+              href="mailto:info@ehddetailing.com"
+              aria-label="Email EHD Detailing"
+            >
+              {/* Local Email Icon */}
+              <Image
+                src="/icons/email.svg"
+                alt="Email"
+                width={18}
+                height={18}
+                className="mr-2"
+              />
+              Email
             </a>
           </Button>
         </div>
@@ -63,6 +109,7 @@ const WHATSAPP_LINK =
     </header>
   )
 }
+
 
 function Hero() {
   return (
@@ -80,10 +127,10 @@ function Hero() {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border bg-background/40 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
             <Sparkles className="h-4 w-4 text-primary" />
-            Mobile • Ceramic • Paint Protection
+            Eye-catching High-gloss Details
           </div>
           <h1 className="mt-5 text-pretty text-3xl font-semibold drop-shadow-md md:text-5xl">
-            Professional Vehicle Detailing in Bathgate Excellence in Every Detail —  We Can Make Your Vehicle Look and Feel Brand New Again!          </h1>
+            Professional Vehicle Detailing in Bathgate Excellence in Each Detail —  Make Your Vehicle Feel New Again!               </h1>
           <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg leading-relaxed">
             Deep Cleaning, Steam Cleaning, Pet Hair Removal, Odour Removal, Engine Bay Detail, Paint Corrections / Polishing, Cermaic Coatings, Any Size / Type of Vehicle! - Transform your Car!          </p>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -117,11 +164,12 @@ function Services() {
       <div className="container mx-auto px-4 py-20">
         <div className="mx-auto max-w-2xl text-center">
           <AnimatedOnView delay={0.02}>
-            <h2 className="text-3xl md:text-4xl font-semibold">Specialist Services</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold">About Us</h2>
           </AnimatedOnView>
           <AnimatedOnView delay={0.08}>
             <p className="mt-3 text-muted-foreground">
-              High-precision techniques. Attention to detail. Results that speak for themselves.
+              At EHD Detailing, we believe perfection is in the details.
+              With care and precision we will aim to achieve mirror like finishes, spotless interiors, we don’t just clean we elevate your vehicle’s entire presence. Our craft blends precision, passion, and premium techniques to bring out the best in every curve, corner, and contour of your car. Whether it’s a daily driver or a showpiece, we treat every car like it’s our own, because great detailing isn’t just seen — it’s experienced. Book with us today and transform your vehicle
             </p>
           </AnimatedOnView>
         </div>
@@ -296,7 +344,7 @@ function Packages() {
 
 
 function Gallery() {
-  return <GallerySection  />
+  return <GallerySection />
 }
 
 function Process() {
@@ -363,7 +411,7 @@ function Testimonials() {
             <h2 className="text-3xl md:text-4xl font-semibold">5‑Star Reviews</h2>
           </AnimatedOnView>
           <AnimatedOnView delay={0.08}>
-            <p className="mt-3 text-muted-foreground">Clients love the finish and the service.</p>
+            <p className="mt-3 text-muted-foreground">See What our clients have to say</p>
           </AnimatedOnView>
         </div>
 
@@ -399,7 +447,7 @@ function Faq() {
     },
     {
       q: "Do you offer mobile service?",
-      a: "Yes—most services are mobile. We only need safe parking, access to the vehicle, and adequate lighting.",
+      a: "At the moment, we operate exclusively from our fully equipped detailing unit. This controlled environment allows us to deliver the highest quality results, with the right tools, lighting, and conditions to care for your vehicle properly. By working from our dedicated space, we can ensure a safer, cleaner, and more consistent finish every time.",
     },
     {
       q: "How long does ceramic coating last?",
