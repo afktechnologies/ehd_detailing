@@ -12,7 +12,7 @@ import ContactForm from "@/components/ContactForm"
 const WHATSAPP_LINK =
   "https://wa.me/447436778666?text=Hi%20EHD%20Detailing%2C%20I%27d%20like%20a%20quote%20for%20my%20car." // update number
 
-function SiteHeader() {
+ function SiteHeader() {
   const nav = [
     { href: "#services", label: "Services" },
     { href: "#packages", label: "Packages" },
@@ -25,9 +25,10 @@ function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur-sm shadow-sm">
-      <div className="container mx-auto flex items-center justify-between px-4 py-3">
+      <div className="container mx-auto flex items-center justify-between px-3 py-2">
+        {/* Logo */}
         <Link href="#top" className="flex items-center gap-3">
-          <div className="relative h-25 w-50"> {/* Adjust size here */}
+          <div className="relative h-8 w-32 md:h-10 md:w-40">
             <Image
               src="/images/ehd-logo.png"
               alt="EHD Detailing logo"
@@ -39,7 +40,8 @@ function SiteHeader() {
           <span className="sr-only">EHD Detailing</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
+        {/* Nav (hidden on small screens) */}
+        <nav className="hidden md:flex items-center gap-5 text-sm">
           {nav.map((n) => (
             <a
               key={n.href}
@@ -51,59 +53,58 @@ function SiteHeader() {
           ))}
         </nav>
 
+        {/* Buttons */}
         <div className="flex items-center gap-2">
-          {/* WhatsApp Button */}
-          <Button asChild className="hidden sm:inline-flex">
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Chat on WhatsApp"
-            >
-              {/* Local WhatsApp Icon */}
-              <Image
-                src="/icons/whatsapp.svg"
-                alt="WhatsApp"
-                width={18}
-                height={18}
-                className="mr-2"
-              />
-              WhatsApp
-            </a>
-          </Button>
+          {/* Desktop / tablet: text + icon (sm and up) */}
+          <div className="hidden sm:flex items-center gap-2">
+            <Button asChild className="inline-flex items-center gap-2 px-3 py-1 text-sm h-8">
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat on WhatsApp"
+                className="flex items-center"
+              >
+                <Image src="/icons/whatsapp.svg" alt="WhatsApp" width={16} height={16} className="inline-block" />
+                <span className="ml-1">WhatsApp</span>
+              </a>
+            </Button>
 
-          {/* Call Button */}
-          <Button variant="secondary" asChild>
-            <a href="tel:+447436778666" aria-label="Call EHD Detailing">
-              {/* Local Phone Icon */}
-              <Image
-                src="/icons/phone.svg"
-                alt="Phone"
-                width={18}
-                height={18}
-                className="mr-2"
-              />
-              Call
-            </a>
-          </Button>
+            <Button variant="secondary" asChild className="inline-flex items-center gap-2 px-3 py-1 text-sm h-8">
+              <a href="tel:+447436778666" aria-label="Call EHD Detailing" className="flex items-center">
+                <Image src="/icons/phone.svg" alt="Phone" width={16} height={16} className="inline-block" />
+                <span className="ml-1">Call</span>
+              </a>
+            </Button>
 
-          {/* Email Button */}
-          <Button variant="outline" asChild>
-            <a
-              href="mailto:info@ehddetailing.com"
-              aria-label="Email EHD Detailing"
-            >
-              {/* Local Email Icon */}
-              <Image
-                src="/icons/email.svg"
-                alt="Email"
-                width={18}
-                height={18}
-                className="mr-2"
-              />
-              Email
-            </a>
-          </Button>
+            <Button variant="outline" asChild className="inline-flex items-center gap-2 px-3 py-1 text-sm h-8">
+              <a href="mailto:info@ehddetailing.com" aria-label="Email EHD Detailing" className="flex items-center">
+                <Image src="/icons/email.svg" alt="Email" width={16} height={16} className="inline-block" />
+                <span className="ml-1">Email</span>
+              </a>
+            </Button>
+          </div>
+
+          {/* Mobile: icon-only circular buttons */}
+          <div className="flex sm:hidden items-center gap-2">
+            <Button asChild className="h-9 w-9 p-0 inline-flex items-center justify-center rounded-full">
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" className="flex items-center">
+                <Image src="/icons/whatsapp.svg" alt="WhatsApp" width={18} height={18} />
+              </a>
+            </Button>
+
+            <Button asChild className="h-9 w-9 p-0 inline-flex items-center justify-center rounded-full">
+              <a href="tel:+447436778666" aria-label="Call EHD Detailing" className="flex items-center">
+                <Image src="/icons/phone.svg" alt="Phone" width={18} height={18} />
+              </a>
+            </Button>
+
+            <Button asChild className="h-9 w-9 p-0 inline-flex items-center justify-center rounded-full">
+              <a href="mailto:info@ehddetailing.com" aria-label="Email EHD Detailing" className="flex items-center">
+                <Image src="/icons/email.svg" alt="Email" width={18} height={18} />
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </header>
