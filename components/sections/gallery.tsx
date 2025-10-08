@@ -13,15 +13,12 @@ export default function GallerySection({
   title?: string
   subtitle?: string
 }) {
-  // 🔹 Add all your images manually here
   const images: GalleryImage[] = [
     { src: "/images/gallery/ford-transit-van.jpg", alt: "Gallery Image 1" },
-    // { src: "/images/gallery/golf-r-side.jpg", alt: "Gallery Image 2" },
     { src: "/images/gallery/golf-r-white.jpg", alt: "Gallery Image 3" },
     { src: "/images/gallery/gwagen-black.jpg", alt: "Gallery Image 4" },
     { src: "/images/gallery/mercedes-vclass.jpg", alt: "Gallery Image 5" },
     { src: "/images/gallery/range-rover-sport.jpg", alt: "Gallery Image 6" },
-    // ➕ Add as many as you have
   ]
 
   const [lightboxOpen, setLightboxOpen] = useState(false)
@@ -35,8 +32,7 @@ export default function GallerySection({
 
   const closeLightbox = () => setLightboxOpen(false)
 
-  const prev = () =>
-    setActiveIndex((i) => (i - 1 + images.length) % images.length)
+  const prev = () => setActiveIndex((i) => (i - 1 + images.length) % images.length)
   const next = () => setActiveIndex((i) => (i + 1) % images.length)
 
   useEffect(() => {
@@ -78,21 +74,10 @@ export default function GallerySection({
 
       {lightboxOpen && (
         <div
-          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center"
           role="dialog"
           aria-modal="true"
-          onClick={closeLightbox}
-          onTouchStart={(e) => {
-            touchX.current = e.touches[0].clientX
-          }}
-          onTouchEnd={(e) => {
-            const start = touchX.current
-            if (start == null) return
-            const end = e.changedTouches[0].clientX
-            const delta = end - start
-            if (Math.abs(delta) > 50) delta > 0 ? prev() : next()
-            touchX.current = null
-          }}
+          onClick={closeLightbox} // clicking outside closes
         >
           {/* Close */}
           <button
@@ -101,7 +86,7 @@ export default function GallerySection({
               e.stopPropagation()
               closeLightbox()
             }}
-            className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20"
+            className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20 z-[101]"
           >
             <X className="h-5 w-5" />
           </button>
@@ -113,7 +98,7 @@ export default function GallerySection({
               e.stopPropagation()
               prev()
             }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20"
+            className="absolute left-4 top-1/2 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20 z-[101]"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
@@ -125,24 +110,22 @@ export default function GallerySection({
               e.stopPropagation()
               next()
             }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20"
+            className="absolute right-4 top-1/2 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20 z-[101]"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
 
-          {/* Active image */}
+          {/* Image container: use plain <img> for reliability in fullscreen */}
           <div
             className="relative mx-auto flex h-full max-w-6xl items-center justify-center px-6"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative aspect-video w-full max-h-[80vh]">
-              <Image
+            <div className="w-full flex items-center justify-center">
+              <img
                 src={images[activeIndex]?.src}
                 alt={images[activeIndex]?.alt || "Gallery image enlarged"}
-                fill
-                sizes="100vw"
-                className="object-contain"
-                priority
+                className="max-h-[80vh] w-auto object-contain"
+                onClick={(e) => e.stopPropagation()}
               />
             </div>
           </div>
