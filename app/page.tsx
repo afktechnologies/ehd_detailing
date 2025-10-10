@@ -28,7 +28,7 @@ const WHATSAPP_LINK =
       <div className="container mx-auto flex items-center justify-between px-3 py-2">
         {/* Logo */}
         <Link href="#top" className="flex items-center gap-3">
-          <div className="relative h-8 w-32 md:h-10 md:w-40">
+          <div className="relative h-18 w-32 md:h-22 md:w-40">
             <Image
               src="/images/ehd-logo.png"
               alt="EHD Detailing logo"
