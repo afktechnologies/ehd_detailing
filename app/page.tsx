@@ -28,9 +28,9 @@ const WHATSAPP_LINK =
       <div className="container mx-auto flex items-center justify-between px-3 py-2">
         {/* Logo */}
         <Link href="#top" className="flex items-center gap-3">
-          <div className="relative h-18 w-32 md:h-22 md:w-40">
+          <div className="relative h-25 w-35 md:h-22 md:w-40">
             <Image
-              src="/images/ehd-logo.png"
+              src="/images/ehd-logo2.png"
               alt="EHD Detailing logo"
               fill
               className="object-contain drop-shadow-lg"
@@ -65,21 +65,21 @@ const WHATSAPP_LINK =
                 aria-label="Chat on WhatsApp"
                 className="flex items-center"
               >
-                <Image src="/icons/whatsapp.svg" alt="WhatsApp" width={16} height={16} className="inline-block" />
+                <Image src="images/whats-app.svg" alt="WhatsApp" width={16} height={16} className="inline-block" />
                 <span className="ml-1">WhatsApp</span>
               </a>
             </Button>
 
             <Button variant="secondary" asChild className="inline-flex items-center gap-2 px-3 py-1 text-sm h-8">
               <a href="tel:+447436778666" aria-label="Call EHD Detailing" className="flex items-center">
-                <Image src="/icons/phone.svg" alt="Phone" width={16} height={16} className="inline-block" />
+                <Image src="/images/call-primary.svg" alt="Phone" width={16} height={16} className="inline-block" />
                 <span className="ml-1">Call</span>
               </a>
             </Button>
 
             <Button variant="outline" asChild className="inline-flex items-center gap-2 px-3 py-1 text-sm h-8">
               <a href="mailto:info@ehddetailing.com" aria-label="Email EHD Detailing" className="flex items-center">
-                <Image src="/icons/email.svg" alt="Email" width={16} height={16} className="inline-block" />
+                <Image src="/images/email-primary.svg" alt="Email" width={16} height={16} className="inline-block" />
                 <span className="ml-1">Email</span>
               </a>
             </Button>
