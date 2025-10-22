@@ -24,7 +24,7 @@ const WHATSAPP_LINK =
   ]
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur-sm shadow-sm">
+   <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur-sm shadow-sm">
       <div className="container mx-auto flex items-center justify-between px-3 py-2">
         {/* Logo */}
         <Link href="#top" className="flex items-center gap-3">
@@ -55,7 +55,7 @@ const WHATSAPP_LINK =
 
         {/* Buttons */}
         <div className="flex items-center gap-2">
-          {/* Desktop / tablet: text + icon (sm and up) */}
+          {/* Desktop / tablet: text + icon */}
           <div className="hidden sm:flex items-center gap-2">
             <Button asChild className="inline-flex items-center gap-2 px-3 py-1 text-sm h-8">
               <a
@@ -65,7 +65,7 @@ const WHATSAPP_LINK =
                 aria-label="Chat on WhatsApp"
                 className="flex items-center"
               >
-                <Image src="images/whats-app.svg" alt="WhatsApp" width={16} height={16} className="inline-block" />
+                <Image src="/images/whats-app.svg" alt="WhatsApp" width={16} height={16} className="inline-block" />
                 <span className="ml-1">WhatsApp</span>
               </a>
             </Button>
@@ -88,20 +88,20 @@ const WHATSAPP_LINK =
           {/* Mobile: icon-only circular buttons */}
           <div className="flex sm:hidden items-center gap-2">
             <Button asChild className="h-9 w-9 p-0 inline-flex items-center justify-center rounded-full">
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" className="flex items-center">
-                <Image src="/icons/whatsapp.svg" alt="WhatsApp" width={18} height={18} />
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                <Image src="/images/whats-app.svg" alt="WhatsApp" width={18} height={18} />
               </a>
             </Button>
 
             <Button asChild className="h-9 w-9 p-0 inline-flex items-center justify-center rounded-full">
-              <a href="tel:+447436778666" aria-label="Call EHD Detailing" className="flex items-center">
-                <Image src="/icons/phone.svg" alt="Phone" width={18} height={18} />
+              <a href="tel:+447436778666" aria-label="Call EHD Detailing">
+                <Image src="/images/phone.svg" alt="Phone" width={18} height={18} />
               </a>
             </Button>
 
             <Button asChild className="h-9 w-9 p-0 inline-flex items-center justify-center rounded-full">
-              <a href="mailto:info@ehddetailing.com" aria-label="Email EHD Detailing" className="flex items-center">
-                <Image src="/icons/email.svg" alt="Email" width={18} height={18} />
+              <a href="mailto:info@ehddetailing.com" aria-label="Email EHD Detailing">
+                <Image src="/images/email.svg" alt="Email" width={18} height={18} />
               </a>
             </Button>
           </div>
