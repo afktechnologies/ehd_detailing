@@ -72,7 +72,7 @@ const WHATSAPP_LINK =
 
             <Button variant="secondary" asChild className="inline-flex items-center gap-2 px-3 py-1 text-sm h-8">
               <a href="tel:+447436778666" aria-label="Call EHD Detailing" className="flex items-center">
-               <Image src="/images/call-primary.svg" alt="Phone" width={16} height={16} />
+               <Image src="/images/call-primary.svg" alt="Phone" width={15} height={15} className="inline-block"  />
 
                 <span className="ml-1">Call</span>
               </a>
@@ -80,7 +80,7 @@ const WHATSAPP_LINK =
 
             <Button variant="outline" asChild className="inline-flex items-center gap-2 px-3 py-1 text-sm h-8">
               <a href="mailto:info@ehddetailing.com" aria-label="Email EHD Detailing" className="flex items-center">
-            <Image src="/images/email-primary.svg" alt="Email" width={16} height={16} />
+            <Image src="/images/email-primary.svg" alt="Email" width={15} height={15} className="inline-block"  />
 
                 <span className="ml-1">Email</span>
               </a>
