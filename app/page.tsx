@@ -10,7 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import ContactForm from "@/components/ContactForm"
 
 const WHATSAPP_LINK =
-  "https://wa.me/447436778666?text=Hi%20EHD%20Detailing%2C%20I%27d%20like%20a%20quote%20for%20my%20car." // update number
+  "https://wa.me/447721907338?text=Hi%20EHD%20Detailing%2C%20I%27d%20like%20a%20quote%20for%20my%20car." // update number
 
  function SiteHeader() {
   const nav = [
